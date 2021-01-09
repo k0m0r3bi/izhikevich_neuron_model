@@ -72,7 +72,7 @@ type NIzkvchParams struct {
 	b  		float64 		// describes the sensitivity of the recovery variable u to the subthreshold fluctuations of the membrane potential v. typical is b = 0:2
 	c  		float64 		// describes the after-spike reset value of the membrane potential v caused by the fast high-threshold K+ conductances. A typical value is c = -65 mV
 	d  		float64 		// describes after-spike reset of the recovery variable u caused by slow high-threshold Na+ and K+ conductances. A typical value is d = 2
-	sOut 	float64 		// spike out value
+	sOut 		float64 		// spike out value
 }
  
 
@@ -82,15 +82,15 @@ type NIzkvch struct {
 	v  		float64 		// membrane potential
 	u  		float64 		// recovery variable
 	in 		chan float64
-	buffer  chan float64
-	out 	chan float64
-	history []float64
+	buffer  	chan float64
+	out 		chan float64
+	history 	[]float64
 }
 
 
 var restV float64  	= -65.0
 var restU float64  	= 0.2 * -65
-var restH []float64 = []float64{-65.0, -65.0}
+var restH []float64 	= []float64{-65.0, -65.0}
 
 func NewNIzkvch(id, t int) (n *NIzkvch) {
 	// http://www.izhikevich.org/publications/spikes.htm
@@ -108,8 +108,8 @@ func NewNIzkvch(id, t int) (n *NIzkvch) {
 		}
 	case t == 1:
 		return &NIzkvch{
-			id:		 id,
-			p:		 FS,
+			id:	 id,
+			p:	 FS,
 			v:  	 restV,
 			u:  	 restU,
 			in: 	 make(chan float64, 200),
@@ -119,8 +119,8 @@ func NewNIzkvch(id, t int) (n *NIzkvch) {
 		}
 	case t == 2:
 		return &NIzkvch{
-			id:		 id,
-			p:		 LTS,
+			id:	 id,
+			p:	 LTS,
 			v:  	 restV,
 			u:  	 restU,
 			in: 	 make(chan float64, 200),
@@ -130,8 +130,8 @@ func NewNIzkvch(id, t int) (n *NIzkvch) {
 		}
 	case t == 3:
 		return &NIzkvch{
-			id:		 id,
-			p:		 IB,
+			id:	 id,
+			p:	 IB,
 			v:  	 restV,
 			u:  	 restU,
 			in: 	 make(chan float64, 200),
@@ -145,7 +145,6 @@ func NewNIzkvch(id, t int) (n *NIzkvch) {
 
 func (n *NIzkvch) Activate() {
 	// go n.Listen()
-	// fmt.Println("Neuron : %-v listening\n", n.id)
 	go n.React()
 }
 
@@ -240,16 +239,16 @@ func main() {
 	            	case rand.Float64() < 0.5:
 	            		switch {
 	            		case rand.Float64() < 0.6:
-	            				neurons[i].in <- -0.4 *rand.Float64()
+	            			neurons[i].in <- -0.4 *rand.Float64()
 	            		default:
-	            				neurons[i].in <- 0.8 *rand.Float64()
+	            			neurons[i].in <- 0.8 *rand.Float64()
 	            		}
 	            	default:
 	            		switch {
 	            		case rand.Float64() < 0.3:
-	            				neurons[i].in <- -1.8 * rand.Float64()
+	            			neurons[i].in <- -1.8 * rand.Float64()
 	            		default:
-	            				neurons[i].in <- 1.3 * rand.Float64()
+	            			neurons[i].in <- 1.3 * rand.Float64()
 	            		}
 	            	}
               	}
