@@ -11,7 +11,7 @@ This script provides means to simulate spiking neuron and their interactions.
 Neurons are created with NewNIzkvch(id, type), then activated using Activate() method.
 
           
-      	neurons[0] = NewNIzkvch(0, 2)
+	neurons[0] = NewNIzkvch(0, 2)
 	neurons[0].Activate()
 
 In order to feed something to the neuron, use it's [in] channel:
