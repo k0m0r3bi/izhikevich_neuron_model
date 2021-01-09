@@ -4,7 +4,7 @@ Playing around Izhikevich spiking models (http://www.izhikevich.org/publications
 
 
 
-This script provides the means to play around this spiking neuron modelisation.
+This script provides means to simulate spiking neuron and their interactions.
 
 [neurons] is a slice containing [nNeurons].
 
