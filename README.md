@@ -11,8 +11,8 @@ This script provides the means to play around this spiking neuron modelisation.
 Neurons are created with NewNIzkvch(id, type), then activated using Activate() method.
 
           
-      neurons[0] = NewNIzkvch(0, 2)
-	    neurons[0].Activate()
+      	neurons[0] = NewNIzkvch(0, 2)
+	neurons[0].Activate()
 
 In order to feed something to the neuron, use it's [in] channel:
 
@@ -26,7 +26,7 @@ If neuron's membrane potentiel reachec +30mV threshhold, a spike is induced in t
 Neurons can be connected by synapses using the NewSynapse(in chan, weight float64, out chan) function.
 
     	synapses[0] = NewSynapse(neurons[0].out, -0.2, neurons[2].in)	
-	    go synapses[0].Transmit()
+	go synapses[0].Transmit()
       
 Synapse will transmit incoming spike to their connected neuron by applying a weight.
 
